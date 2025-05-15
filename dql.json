@@ -1,0 +1,17 @@
+{
+  "query": "fetch logs | filter isNotNull(messages.processstarttime) | limit 25 | fields messages.processstarttime, messages.processingtime | sort messages.processstarttime asc",
+  "defaultTimeframeStart": "2025-05-10T09:12:00.000Z",
+  "defaultTimeframeEnd": "2025-05-10T09:14:00.000Z",
+  "timezone": "UTC",
+  "locale": "en_US",
+  "maxResultRecords": 100,
+  "maxResultBytes": 10000000,
+  "fetchTimeoutSeconds": 60,
+  "requestTimeoutMilliseconds": 29000,
+  "enablePreview": true,
+  "defaultSamplingRatio": 1000,
+  "defaultScanLimitGbytes": 100,
+  "queryOptions": null,
+  "filterSegments": null,
+  "includeTypes": true
+}

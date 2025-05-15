@@ -1,0 +1,97 @@
+{
+  "state": "SUCCEEDED",
+  "progress": 100,
+  "result": {
+    "records": [
+      {
+        "messages.processstarttime": "2025-05-10T09:12:00.243Z",
+        "messages.processingtime": "5"
+      },
+      {
+        "messages.processstarttime": "2025-05-10T09:12:02.735Z",
+        "messages.processingtime": "40"
+      },
+      {
+        "messages.processstarttime": "2025-05-10T09:12:04.686Z",
+        "messages.processingtime": "8"
+      },
+      {
+        "messages.processstarttime": "2025-05-10T09:12:05.426Z",
+        "messages.processingtime": "8"
+      },
+      {
+        "messages.processstarttime": "2025-05-10T09:12:06.152Z",
+        "messages.processingtime": "4"
+      },
+      {
+        "messages.processstarttime": "2025-05-10T09:12:06.178Z",
+        "messages.processingtime": "40"
+      },
+      {
+        "messages.processstarttime": "2025-05-10T09:12:11.926Z",
+        "messages.processingtime": "9"
+      },
+      {
+        "messages.processstarttime": "2025-05-10T09:12:19.310Z",
+        "messages.processingtime": "1"
+      },
+      {
+        "messages.processstarttime": "2025-05-10T09:12:28.987Z",
+        "messages.processingtime": "135"
+      },
+      {
+        "messages.processstarttime": "2025-05-10T09:12:34.510Z",
+        "messages.processingtime": "18"
+      }
+    ],
+    "types": [
+      {
+        "indexRange": [
+          0,
+          9
+        ],
+        "mappings": {
+          "messages.processstarttime": {
+            "type": "string"
+          },
+          "messages.processingtime": {
+            "type": "string"
+          }
+        }
+      }
+    ],
+    "metadata": {
+      "grail": {
+        "canonicalQuery": "fetch logs\n| filter isNotNull(messages.processstarttime)\n| limit 25\n| fields messages.processstarttime, messages.processingtime",
+        "timezone": "Z",
+        "query": "fetch logs | filter isNotNull(messages.processstarttime) | limit 25 | fields messages.processstarttime, messages.processingtime",
+        "scannedRecords": 72670,
+        "dqlVersion": "V1_0",
+        "scannedBytes": 3768611,
+        "scannedDataPoints": 0,
+        "analysisTimeframe": {
+          "start": "2025-05-10T09:12:00.000000000Z",
+          "end": "2025-05-10T09:14:00.000000000Z"
+        },
+        "locale": "en-US",
+        "executionTimeMilliseconds": 34,
+        "notifications": [
+          {
+            "severity": "WARNING",
+            "messageFormat": "Your result has been limited to %1$s.",
+            "messageFormatSpecifierTypes": [
+              "NUMBER"
+            ],
+            "arguments": [
+              "10"
+            ],
+            "notificationType": "API_RECORDS_LIMIT_ADDED",
+            "message": "Your result has been limited to 10."
+          }
+        ],
+        "queryId": "9...2",
+        "sampled": true
+      }
+    }
+  }
+}
