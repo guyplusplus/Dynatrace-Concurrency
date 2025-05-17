@@ -15,7 +15,7 @@ messages.processstarttime,messages.processingtime,concurrency
 2025-05-10T09:13:44.210,30,1
 ```
 
-Additionally this tool creates a table with time ranges. For example:
+Additionally this tool creates a summarized table with time slots, showing the number of events and the maximum concurrency during this interval. For example:
 
 ```text
 Timeslot date-time,Event count,Max concurrency
