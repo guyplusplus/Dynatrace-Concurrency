@@ -1,3 +1,50 @@
 # Dynatrace Concurrency
 
-This utility reproduces the capability of `concurrency` of Splunk.
+This utility reproduces the capability of [`concurrency`](https://docs.splunk.com/Documentation/SplunkCloud/latest/SearchReference/Concurrency) of Splunk.
+
+> Concurrency measures the number of events which have spans that overlap with the start of each event. Alternatively, this measurement represents the total number of events in progress at the time that each particular event started, including the event itself. This command does not measure the total number of events that a particular event overlapped with during its total span.
+
+For each event (log entry, etc.), a new 'concurrency' key is added. For example:
+
+```text
+messages.processstarttime,messages.processingtime,concurrency
+2025-05-10T09:12:00.243Z,853,1
+2025-05-10T09:12:00.735Z,40,2
+2025-05-10T09:12:04.426Z,784,1
+2025-05-10T09:12:04.686Z,340,2
+2025-05-10T09:13:44.210,30,1
+```
+
+Additionally this tool creates a table with time ranges. For example:
+
+```text
+Timeslot date-time,Event count,Max concurrency
+2025-05-10T09:12:00Z,4,2
+2025-05-10T09:13:00Z,1,1
+```
+
+This utility relies on Grail API, information can be found [here](https://developer.dynatrace.com/plan/platform-services/grail-service/). Swagger UI can be found at https://**yourSite**.apps.dynatrace.com/platform/swagger-ui/index.html?urls.primaryName=Grail%20-%20DQL%20Query#/Query%20Execution/query%3Aexecute .
+
+## Basic invocation
+
+Simply call the java JAR file, by indicating `-events` to output raw events with their concurrency (the first table above), and `-timeslot 60` to output summarized output, in this case with an interval of 60 seconds.
+
+`java -jar dynatraceConcurrency-1.0.jar -events -timeslot 60`
+
+In the case the Grail DQL output does not refer to the standard columns `messages.processstarttime` and `messages.processingtime`, it is possible to overwrite these with the command line arguments `-field.startTime fieldName` and/or `-field.duration fieldName`.
+
+`java -jar dynatraceConcurrency-1.0.jar -?` outputs the different arguments.
+
+## Configuration
+
+The `dql.json` contains the main DQL statement with additional tuning parameters.
+
+DQL syntax can be found [here](https://docs.dynatrace.com/docs/discover-dynatrace/references/dynatrace-query-language).
+
+The `dynatraceAccount.secrets` contains the API key, your SaaS instance URL, and optionally some web proxy information to connect to.
+
+API key can be created (here)[https://myaccount.dynatrace.com/platformTokens], your login is required.
+
+## Save and load Grail responses
+
+It is possible to save a Grail response with the command line argument `-saveDQLResultsFileName myFile.out`, and load it later without any new Grail query with the argument `loadDQLResultsFileName myFile.out`. 
