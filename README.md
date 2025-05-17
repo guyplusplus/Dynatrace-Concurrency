@@ -47,9 +47,15 @@ In the case the Grail DQL output does not refer to the standard columns `message
 
 ## Configuration files
 
+### dql.json
+
 The `dql.json` contains the main DQL statement with additional tuning parameters, mostly timeouts and maximum query and return size. These values can be adjusted based on a possible warning message included in the response.
 
 DQL syntax guide can be found [here](https://docs.dynatrace.com/docs/discover-dynatrace/references/dynatrace-query-language).
+
+Query parameters can be found [here](https://developer.dynatrace.com/develop/sdks/client-query/#executerequest).
+
+### dynatraceAccount.secrets
 
 The `dynatraceAccount.secrets` file contains the API key, your SaaS instance URL, and optionally some web proxy information to connect to.
 
