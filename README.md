@@ -48,11 +48,11 @@ In the case the Grail DQL output does not refer to the standard columns `message
 
 The `dql.json` contains the main DQL statement with additional tuning parameters, mostly timeouts and maximum query and return size. These values can be adjusted based on a possible warning message included in the response.
 
-DQL syntax can be found [here](https://docs.dynatrace.com/docs/discover-dynatrace/references/dynatrace-query-language).
+DQL syntax guide can be found [here](https://docs.dynatrace.com/docs/discover-dynatrace/references/dynatrace-query-language).
 
 The `dynatraceAccount.secrets` file contains the API key, your SaaS instance URL, and optionally some web proxy information to connect to.
 
-An API token must be created (here)[https://myaccount.dynatrace.com/platformTokens] with only logs or events READ access permission. Your own login is required. Alternatively the API token can be created by a site administrator.
+An API token must be created [here](https://myaccount.dynatrace.com/platformTokens) with only logs or events READ access permission. Your own login is required. Alternatively the API token can be created by a site administrator.
 
 ## Save and load Grail responses
 
