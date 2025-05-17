@@ -6,7 +6,7 @@
 	<groupId>com.geckotechnology.dynatraceConcurrency</groupId>
 	<artifactId>dynatraceConcurrency</artifactId>
 	<packaging>jar</packaging>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0</version>
 
 	<name>Dynatracetrace Concurrency</name>
 	<url>https://github.com/guyplusplus/Dynatrace-Concurrency</url>
