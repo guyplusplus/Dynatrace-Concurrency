@@ -23,7 +23,8 @@ Timeslot date-time,Event count,Max concurrency
 2025-05-10T09:13:00Z,1,1
 ```
 
-The reports concludes with the following information that is important to read to possibly tune the request:
+The reports concludes with the following information that is important to read to possibly tune the request. It shows in particular the maximum concu
+across all events.
 
 ```text
 Engine max Concurrency: 2
@@ -34,7 +35,7 @@ Analysis complete.
 
 This utility relies on Grail API, information can be found [here](https://developer.dynatrace.com/plan/platform-services/grail-service/). Swagger UI can be found at `https://**yourSite**.apps.dynatrace.com/platform/swagger-ui/index.html?urls.primaryName=Grail%20-%20DQL%20Query#/Query%20Execution/query%3Aexecute` .
 
-## Basic invocation
+## Utility invocation
 
 Simply call the java JAR file, by indicating optionally `-events` to output raw events with their calculated concurrency (the first table above), and optionally `-timeslot 60` to output summarized output, in this sample example with an interval of 60 seconds.
 
