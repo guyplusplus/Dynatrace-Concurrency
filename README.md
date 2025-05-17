@@ -23,7 +23,7 @@ Timeslot date-time,Event count,Max concurrency
 2025-05-10T09:13:00Z,1,1
 ```
 
-The reports concludes with the following information that are important to read to tune the request:
+The reports concludes with the following information that is important to read to possibly tune the request:
 
 ```text
 Engine max Concurrency: 1
