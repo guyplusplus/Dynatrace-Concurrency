@@ -35,6 +35,14 @@ Analysis complete.
 
 This utility relies on Grail API, information can be found [here](https://developer.dynatrace.com/plan/platform-services/grail-service/). Swagger UI can be found at `https://**yourSite**.apps.dynatrace.com/platform/swagger-ui/index.html?urls.primaryName=Grail%20-%20DQL%20Query#/Query%20Execution/query%3Aexecute` .
 
+## Algorithm
+
+The utility keeps a sorted list of events end-time.
+
+Events arrive in chronological start-time ascending order. When an event arrives, end-time entries strickly before this event start-time are removed from the sorted list. This event concurrency is equal to the number of elements in the list.
+
+This event end-time is then added to the sorted list.
+
 ## Utility invocation
 
 Simply call the java JAR file, by indicating optionally `-events` to output raw events with their calculated concurrency (the first table above), and optionally `-timeslot 60` to output summarized output, in this sample example with an interval of 60 seconds.
