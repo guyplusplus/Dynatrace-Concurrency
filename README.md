@@ -23,13 +23,22 @@ Timeslot date-time,Event count,Max concurrency
 2025-05-10T09:13:00Z,1,1
 ```
 
-This utility relies on Grail API, information can be found [here](https://developer.dynatrace.com/plan/platform-services/grail-service/). Swagger UI can be found at https://**yourSite**.apps.dynatrace.com/platform/swagger-ui/index.html?urls.primaryName=Grail%20-%20DQL%20Query#/Query%20Execution/query%3Aexecute .
+The reports concludes with the following information that are important to read to tune the request:
+
+```text
+Engine max Concurrency: 1
+Grail stats: scannedRecords:72670, scannedBytes:3768611
+Grail notification: WARNING: Your result has been limited to 10.
+Analysis complete.
+```
+
+This utility relies on Grail API, information can be found [here](https://developer.dynatrace.com/plan/platform-services/grail-service/). Swagger UI can be found at `https://**yourSite**.apps.dynatrace.com/platform/swagger-ui/index.html?urls.primaryName=Grail%20-%20DQL%20Query#/Query%20Execution/query%3Aexecute` .
 
 ## Basic invocation
 
-Simply call the java JAR file, by indicating `-events` to output raw events with their concurrency (the first table above), and `-timeslot 60` to output summarized output, in this case with an interval of 60 seconds.
+Simply call the java JAR file, by indicating optionally `-events` to output raw events with their calculated concurrency (the first table above), and optionally `-timeslot 60` to output summarized output, in this sample example with an interval of 60 seconds.
 
-`java -jar dynatraceConcurrency-1.0.jar -events -timeslot 60`
+`java -jar dynatraceConcurrency-1.0-jar-with-dependencies.jar -events -timeslot 60`
 
 In the case the Grail DQL output does not refer to the standard columns `messages.processstarttime` and `messages.processingtime`, it is possible to overwrite these with the command line arguments `-field.startTime fieldName` and/or `-field.duration fieldName`.
 
@@ -37,7 +46,7 @@ In the case the Grail DQL output does not refer to the standard columns `message
 
 ## Configuration
 
-The `dql.json` contains the main DQL statement with additional tuning parameters.
+The `dql.json` contains the main DQL statement with additional tuning parameters, mostly timeouts and maximum query and return size. These values can be adjusted based on a possible warning message included in the response.
 
 DQL syntax can be found [here](https://docs.dynatrace.com/docs/discover-dynatrace/references/dynatrace-query-language).
 
