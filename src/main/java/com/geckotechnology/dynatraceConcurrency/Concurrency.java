@@ -46,7 +46,7 @@ public class Concurrency {
 	private ArrayList<TimeslotStatistics> statisticsArrayList = null;
 	
 	private void printHelp() {
-		System.out.println("java concurrent.jar [-h/-help/-?] [-events] [-timeslot timeslotDurationInSeconds] [-loadDQLResultsFileName filename] [-saveDQLResultsFileName filename] [-field.startTime fieldName] [-field.duration fieldName] [-proxy host:port] [-proxy-user usernam:pwd]");
+		System.out.println("java concurrent.jar [-h/-help/-?] [-events] [-timeslot timeslotDurationInSeconds] [-loadDQLResultsFileName filename] [-saveDQLResultsFileName filename] [-field.startTime fieldName] [-field.duration fieldName]");
 	}
 	
 	private void initData(String[] args) {
