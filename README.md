@@ -26,9 +26,9 @@ Timeslot date-time,Event count,Max concurrency
 The reports concludes with the following information that is important to read to possibly tune the request:
 
 ```text
-Engine max Concurrency: 1
+Engine max Concurrency: 2
 Grail stats: scannedRecords:72670, scannedBytes:3768611
-Grail notification: WARNING: Your result has been limited to 10.
+Grail notification: WARNING: Your result has been limited to 5.
 Analysis complete.
 ```
 
