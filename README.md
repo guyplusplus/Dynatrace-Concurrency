@@ -44,16 +44,16 @@ In the case the Grail DQL output does not refer to the standard columns `message
 
 `java -jar dynatraceConcurrency-1.0.jar -?` outputs the different arguments.
 
-## Configuration
+## Configuration files
 
 The `dql.json` contains the main DQL statement with additional tuning parameters, mostly timeouts and maximum query and return size. These values can be adjusted based on a possible warning message included in the response.
 
 DQL syntax can be found [here](https://docs.dynatrace.com/docs/discover-dynatrace/references/dynatrace-query-language).
 
-The `dynatraceAccount.secrets` contains the API key, your SaaS instance URL, and optionally some web proxy information to connect to.
+The `dynatraceAccount.secrets` file contains the API key, your SaaS instance URL, and optionally some web proxy information to connect to.
 
-API key can be created (here)[https://myaccount.dynatrace.com/platformTokens], your login is required.
+An API token must be created (here)[https://myaccount.dynatrace.com/platformTokens] with only logs or events READ access permission. Your own login is required. Alternatively the API token can be created by a site administrator.
 
 ## Save and load Grail responses
 
-It is possible to save a Grail response with the command line argument `-saveDQLResultsFileName myFile.out`, and load it later without any new Grail query with the argument `loadDQLResultsFileName myFile.out`. 
+It is possible to save a Grail response with the command line argument `-saveDQLResultsFileName myFile.out`, and load it later without any new Grail query with the argument `-loadDQLResultsFileName myFile.out`. 
