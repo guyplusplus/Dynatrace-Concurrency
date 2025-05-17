@@ -59,6 +59,8 @@ In the case the Grail DQL output does not refer to the standard columns `message
 
 The `dql.json` contains the main DQL statement with additional tuning parameters, mostly timeouts and maximum query and return size. These values can be adjusted based on a possible warning message included in the response.
 
+**Important: events must be sorted by messages.processstarttime ascending order.**. The utility detects and stops if it is not the case.
+
 DQL syntax guide can be found [here](https://docs.dynatrace.com/docs/discover-dynatrace/references/dynatrace-query-language).
 
 Query parameters can be found [here](https://developer.dynatrace.com/develop/sdks/client-query/#executerequest).
