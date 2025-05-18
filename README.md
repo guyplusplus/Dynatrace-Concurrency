@@ -27,6 +27,7 @@ The reports concludes with the following information that is important to read t
 across all events.
 
 ```text
+Engine processed events: 5
 Engine max Concurrency: 2
 Grail stats: scannedRecords:72670, scannedBytes:3768611
 Grail notification: WARNING: Your result has been limited to 5.
@@ -57,7 +58,7 @@ In the case the Grail DQL output does not refer to the standard columns `message
 
 ### dql.json
 
-The `dql.json` contains the main DQL statement with additional tuning parameters, mostly timeouts and maximum query and return size. These values can be adjusted based on a possible warning message included in the response.
+The `dql.json` contains the main DQL statement and the start and end times. It contains also additional tuning parameters, mostly timeouts (`fetchTimeoutSeconds` and `requestTimeoutMilliseconds`) and maximum query and return size (`maxResultRecords` and `maxResultBytes`). These values can be adjusted based on a possible warning message included in the response.
 
 **Important: events must be sorted by messages.processstarttime ascending order.**. The utility detects and stops if it is not the case.
 
