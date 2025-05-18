@@ -48,11 +48,11 @@ This event end-time is then added to the sorted list.
 
 Simply call the java JAR file, by indicating optionally `-events` to output raw events with their calculated concurrency (the first table above), and optionally `-timeslot 60` to output summarized output, in this sample example with an interval of 60 seconds.
 
-`java -jar dynatraceConcurrency-1.0-jar-with-dependencies.jar -events -timeslot 60`
+`java -jar dynatraceConcurrency-n.m-jar-with-dependencies.jar -events -timeslot 60`
 
 In the case the Grail DQL output does not refer to the standard columns `messages.processstarttime` and `messages.processingtime`, it is possible to overwrite these with the command line arguments `-field.startTime fieldName` and/or `-field.duration fieldName`.
 
-`java -jar dynatraceConcurrency-1.0.jar -?` outputs the different arguments.
+`java -jar dynatraceConcurrency-n.m.jar -?` outputs the different arguments.
 
 ## Configuration files
 
