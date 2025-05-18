@@ -12,6 +12,7 @@ public class ConcurrencyStateEngine {
 	private TimeslotStatistics previousTimeslotStatistics = null;
 	private SortedLinkedList<ZonedDateTime> eventEndDateTimeSortedList = new SortedLinkedList<ZonedDateTime>(Comparator.naturalOrder());
 	private int maxConcurrency = 0; //for the entire event set
+	private int eventsReceivedCount = 0;
 	
 	public ConcurrencyStateEngine() {
 		this.timeslotDurationInSeconds = -1;
@@ -52,6 +53,7 @@ public class ConcurrencyStateEngine {
 	}
 	
 	public void receiveEvent(Event event) {
+		eventsReceivedCount++;
 		//STEP-1: check if previous event is before this new event
 		if(previousEvent != null) {
 			if((previousEvent.getStartDateTime().compareTo(event.getStartDateTime())) > 0)
@@ -91,6 +93,10 @@ public class ConcurrencyStateEngine {
 
 	public int getMaxConcurrency() {
 		return maxConcurrency;
+	}
+	
+	public int getEventReceivedCount() {
+		return eventsReceivedCount;
 	}
 
 }
