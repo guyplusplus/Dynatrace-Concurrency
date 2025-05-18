@@ -6,6 +6,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.net.Authenticator;
+import java.net.HttpURLConnection;
 import java.net.InetSocketAddress;
 import java.net.PasswordAuthentication;
 import java.net.ProxySelector;
@@ -20,6 +21,7 @@ import java.time.Duration;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Properties;
+import java.util.zip.GZIPInputStream;
 
 import javax.json.Json;
 import javax.json.JsonArray;
@@ -148,7 +150,7 @@ public class Concurrency {
 	                .uri(URI.create(secretsProps.getProperty("dynatraceSaaSURL") + "/platform/storage/query/v1/query:execute?enrich=metric-metadata"))
 	                .header("Content-Type", "application/json")
 			        .header("Accept", "application/json")
-			        //.header("Accept-Encoding", "gzip, deflate") // @TODO implement compressed response
+			        .header("Accept-Encoding", "gzip")
 			        .header("dt-client-context", "concurrency-client-context-concurrent")
 			        .header("enforce-query-consumption-limit", "true")
 			        .header("Authorization", "Bearer " + secretsProps.getProperty("apiToken"))
@@ -156,11 +158,14 @@ public class Concurrency {
 	                .POST(HttpRequest.BodyPublishers.ofFile(Paths.get(DQL_JSON_FILENAME)))
 	                .build();
 	        HttpResponse<InputStream> response = client.send(request, HttpResponse.BodyHandlers.ofInputStream());
-	        if(response.statusCode() != 200) {
+	        if(response.statusCode() != HttpURLConnection.HTTP_OK) {
 	        	System.err.println("Call to API did not return status code 200. " + response.statusCode());
 	        	System.exit(-1);
 	        }
-			JsonReader rdr = Json.createReader(response.body());
+	        InputStream inputStream = response.body();
+	        if ("gzip".equals(response.headers().firstValue("Content-Encoding").orElse("")))
+	        	inputStream = new GZIPInputStream(inputStream);	        	
+			JsonReader rdr = Json.createReader(inputStream);
 			dqlResults = rdr.readObject();
 			System.out.println("Retrieved data from API successfully");
 		} catch (Exception e) {
@@ -251,6 +256,7 @@ public class Concurrency {
 				printCSVTimeslotStatistics(stats);
 		}
 		System.out.println();
+		System.out.println("Engine processed events: " + engine.getEventReceivedCount());
 		System.out.println("Engine max Concurrency: " + engine.getMaxConcurrency());
 		JsonObject grail = dqlResults.getJsonObject("result").getJsonObject("metadata").getJsonObject("grail");
 		System.out.println("Grail stats: scannedRecords:" + grail.getInt("scannedRecords") + ", scannedBytes:" + grail.getInt("scannedBytes"));
