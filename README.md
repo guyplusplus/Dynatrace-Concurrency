@@ -60,7 +60,9 @@ In the case the Grail DQL output does not refer to the standard columns `message
 
 The `dql.json` contains the main DQL statement and the start and end times. It contains also additional tuning parameters, mostly timeouts (`fetchTimeoutSeconds` and `requestTimeoutMilliseconds`) and maximum query and return size (`maxResultRecords` and `maxResultBytes`). These values can be adjusted based on a possible warning message included in the response.
 
-**Important: events must be sorted by messages.processstarttime ascending order.**. The utility detects and stops if it is not the case.
+**Important: events must be sorted by messages.processstarttime ascending order.**. The utility detects and stops if it is not the case. Events must carry start time and duration. It is recommended to limit to these fields to reduce egress traffic. For example:
+
+`fetch logs | filter isNotNull(messages.processstarttime) | limit 25 | fields messages.processstarttime, messages.processingtime | sort messages.processstarttime asc`
 
 DQL syntax guide can be found [here](https://docs.dynatrace.com/docs/discover-dynatrace/references/dynatrace-query-language).
 
