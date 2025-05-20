@@ -62,7 +62,7 @@ The `dql.json` contains the main DQL statement and the start and end times. It c
 
 **Important: events must be sorted by messages.processstarttime ascending order.**. The utility detects and stops if it is not the case. Events must carry start time and duration. It is recommended to limit to these fields to reduce egress traffic. For example:
 
-`fetch logs | filter isNotNull(messages.processstarttime) | limit 25 | fields messages.processstarttime, messages.processingtime | sort messages.processstarttime asc`
+`fetch logs | filter isNotNull(messages.processstarttime) | fields messages.processstarttime, messages.processingtime | sort messages.processstarttime asc | limit 10000`
 
 DQL syntax guide can be found [here](https://docs.dynatrace.com/docs/discover-dynatrace/references/dynatrace-query-language).
 

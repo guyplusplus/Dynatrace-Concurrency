@@ -1,5 +1,5 @@
 {
-  "query": "fetch logs | filter isNotNull(messages.processstarttime) | limit 25 | fields messages.processstarttime, messages.processingtime | sort messages.processstarttime asc",
+  "query": "fetch logs | filter isNotNull(messages.processstarttime) | fields messages.processstarttime, messages.processingtime | sort messages.processstarttime asc | limit 100",
   "defaultTimeframeStart": "2025-05-10T09:12:00.000Z",
   "defaultTimeframeEnd": "2025-05-10T09:14:00.000Z",
   "timezone": "UTC",
